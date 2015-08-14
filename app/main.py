@@ -29,6 +29,7 @@ myLcd.setColor(53, 39, 249)
 pubKey = os.getenv("PUBLISH_KEY")
 subKey = os.getenv("SUBSCRIBE_KEY")
 channel = os.getenv("CHANNEL")
+deviceName = os.getenv("DEV_NAME")
 updatePeriod = int(os.getenv("PERIOD"),30)
 print('update period is: '+ str(updatePeriod))
 pubnub = Pubnub(publish_key=pubKey, subscribe_key=subKey, ssl_on=True)
@@ -56,30 +57,23 @@ def getNoiseLevel():
             return thresh
 
 while 1:
-    start = time.time()
-    end1 = time.time()
     noiseLevel = getNoiseLevel()
-    end2 = time.time()
-
-    luxValue = int(lightLevel.value())
-    end3 = time.time()
-    tempValue = int(temp.value())
-    end4 = time.time()
+    luxLevel = int(lightLevel.value())
+    tempLevel = int(temp.value())
 
     myLcd.setCursor(0,0)
-    myLcd.write('Light: ' + str(luxValue) + ' Lux')
+    myLcd.write('Light: ' + str(luxLevel) + ' Lux')
     myLcd.setCursor(1,0)
-    myLcd.write('temp: ' + str(tempValue) + ' C')
+    myLcd.write('temp: ' + str(tempLevel) + ' C')
 
-    sensors = {"lux":luxValue,"temp":tempValue,"noise":noiseLevel} #,"dust":int(dustData.ratio)}
+    sensors = {"lux":luxLevel,"temp":tempLevel,"noise":noiseLevel}
+
     #publishData(channel,sensors)
-    end5 = time.time()
-
-    print('total execution time: '+str(end5-start))
-    print('dust exec time: '+str(end1-start))
-    print('noise exec time: '+str(end2-end1))
-    print('lux exec time: '+str(end3-end2))
-    print('temp exec time: '+str(end4-end3))
+    # publishData('temp-channel',{deviceName+"-temp":tempLevel})
+    # publishData('lux-channel',{deviceName+"-lux":luxLevel})
+    # publishData('noise-channel',{deviceName+"-noise":noiseLevel})
+    print deviceName
+    print sensors
     time.sleep(updatePeriod)
 
 # Delete the light sensor object
