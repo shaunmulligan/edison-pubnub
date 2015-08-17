@@ -9,6 +9,14 @@ body {
   background: #fff;
   color: #767676;
 }
+.panel {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.panel-heading {
+    padding: 5px 15px;
+	}
 
 h4 {
 	text-transform: uppercase;
@@ -54,4 +62,8 @@ h4 {
 
 .footer {
 	text-align: center;
+}
+
+.c3 {
+	max-height: 220px !important;
 }
