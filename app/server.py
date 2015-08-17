@@ -14,8 +14,5 @@ def get_config():
                    channel=os.getenv("CHANNEL","lux-channel"),
                    updatePeriod=os.getenv("PERIOD",5000))
 
-def startServer():
-    app.run(host='0.0.0.0',port=int("80"))
-
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0',port=int("80"))

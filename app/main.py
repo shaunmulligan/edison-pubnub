@@ -69,9 +69,9 @@ while 1:
     sensors = {"lux":luxLevel,"temp":tempLevel,"noise":noiseLevel}
 
     #publishData(channel,sensors)
-    # publishData('temp-channel',{deviceName+"-temp":tempLevel})
+    publishData('temp-channel',{deviceName+"-temp":tempLevel})
     publishData('lux-channel',{deviceName+"-lux":luxLevel})
-    # publishData('noise-channel',{deviceName+"-noise":noiseLevel})
+    publishData('noise-channel',{deviceName+"-noise":noiseLevel})
     print deviceName
     print sensors
     time.sleep(updatePeriod)

@@ -9,7 +9,6 @@
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
@@ -17,7 +16,7 @@
     <!-- scripts -->
   </head>
   <body>
-    <section ng-app="elecMonitor" ng-controller="ctrl">
+    <section>
       <div class="container">
         <div class="row page-title">
           <div class="col-md-6 col-md-offset-3">
@@ -25,30 +24,34 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4>Latest Recordings</h4>
+                <h4>Temperature Data</h4>
               </div>
               <div class="panel-body">
-                <div ng-repeat="recording in sensorValues">
-                    <div class="recording">
-                      <span class="integer" id="latest">{{recording[0]}} {{recording[1]}}</span>
-                    </div>
-                </div>
+                <div id="temp-chart"></div>
               </div>
             </div>
-          </div>
-          <div class="col-md-8">
+        </div>
+        <div class="row">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4>Realtime Consumption</h4>
+                <h4>Light Level Data</h4>
               </div>
               <div class="panel-body">
-                <div id="chart"></div>
+                <div id="lux-chart"></div>
               </div>
             </div>
-          </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Noise Level Data</h4>
+              </div>
+              <div class="panel-body">
+                <div id="noise-chart"></div>
+              </div>
+            </div>
         </div>
         <div class="row footer">
           <div class="col-md-6 col-md-offset-3">
